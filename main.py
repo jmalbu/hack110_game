@@ -4,7 +4,6 @@ from pygame.locals import K_ESCAPE, KEYDOWN, QUIT
 from background import *
 from constants import *
 from sprites_hero import *
-from tyler import *
 
 pygame.init()
 

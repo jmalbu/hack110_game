@@ -1,7 +1,7 @@
 import random
 
 
-HERO = "assets/hero.com.png"
+HERO = "assets/hero.png"
 HERO_SPEED = 1
 BACKGROUND = "assets/spooky_back.png"
 ENEMY = "assets/enemy.png"
