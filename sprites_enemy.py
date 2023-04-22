@@ -1,7 +1,6 @@
 from constants import *
 import pygame
 from pygame.locals import RLEACCEL
-import random
 
 class Enemy(pygame.sprite.Sprite):
     """Evil pumpkin."""
