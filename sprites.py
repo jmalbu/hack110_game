@@ -7,11 +7,13 @@ from constants import *
 class Hero(pygame.sprite.Sprite):
 
     lives: int = 3
+    gravity: int = 10 
 
     def __init__(self) -> None:
         super(Hero, self).__init__()
 
         self.surf = pygame.image.load(HERO).convert()
+        self.gravity = 1
         
         self.speed = HERO_SPEED
 
@@ -19,24 +21,26 @@ class Hero(pygame.sprite.Sprite):
         self.surf.set_colorkey((0, 0, 0), RLEACCEL)
 
     def update(self, pressed_keys) -> None:
+        
         if pressed_keys[K_LEFT]:
             self.rect.move_ip(-self.speed, 0)
         if pressed_keys[K_RIGHT]:
             self.rect.move_ip(self.speed, 0)
+        if random.randint(1, 5) == 5: 
+            self.rect.move_ip(0, self.gravity)
 
         if self.rect.left < 0:
             self.rect.left = 0
-        if self.rect.right > SCREEN_WIDTH:
-            self.rect.right = SCREEN_WIDTH
+        if self.rect.right > 875:
+            self.rect.right = 875
         if self.rect.top <= 50:
             self.rect.top = 50
-        if self.rect.bottom >= 550:
-            self.rect.bottom = 550
+        if self.rect.bottom >= 500:
+            self.rect.bottom = 500
+    
+    def jump(self):
+        self.rect.move_ip(0, -250)
 
-from constants import *
-import pygame
-from pygame.locals import RLEACCEL
-import random
 
 class Enemy(pygame.sprite.Sprite):
     """Evil pumpkin."""
@@ -52,7 +56,7 @@ class Enemy(pygame.sprite.Sprite):
         self.surf.set_colorkey((0, 0, 0), RLEACCEL)
 
         # Sets pumpkin to middle of the screen
-        self.rect = self.surf.get_rect(center = (750, 300))
+        self.rect = self.surf.get_rect(center = (750, 250))
 
 
 
@@ -61,20 +65,26 @@ class Projectile(pygame.sprite.Sprite):
 
     def __init__(self) -> None:
         # Super class initialization of the sprite
-        super(Enemy, self).__init__()
+        super(Projectile, self).__init__()
+
+        
 
         # Create the image for the enemy to be, convert it
         image_path = BULLET
         self.surf = pygame.image.load(image_path).convert()
+        self.surf = pygame.transform.scale(self.surf, (60, 60))
 
         # Remove the black background
         self.surf.set_colorkey((0, 0, 0), RLEACCEL)
 
         # Spawns the bullets from the pumpkin
-        self.rect = self.surf.get_rect(center = (800, BACKGROUND_HEIGHT / 2))
+        self.rect = self.surf.get_rect(center = (620, BACKGROUND_HEIGHT / 2))
 
         # Set their speed to the constant from the constants file
         self.speed = BULLET_SPEED
+
+    def update(self):
+        self.rect.move_ip(-self.speed, 0)
 
             
     
