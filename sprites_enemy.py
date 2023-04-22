@@ -11,13 +11,16 @@ class Enemy(pygame.sprite.Sprite):
         super(Enemy, self).__init__()
         
         # Create the image for the enemy to be, convert it
-        self.surf = pygame.image.load(ENEMY.png).convert()
+        self.surf = pygame.image.load(ENEMY).convert()
 
         # Remove the black background
         self.surf.set_colorkey((0, 0, 0), RLEACCEL)
 
         # Sets pumpkin to middle of the screen
         self.rect = self.surf.get_rect(center = (800, BACKGROUND_HEIGHT / 2))
+
+    def update(self):
+        self.rect.move_ip(-self.speed, 0)
 
 
 class Projectile(pygame.sprite.Sprite):

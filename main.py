@@ -10,8 +10,10 @@ pygame.init()
 screen = pygame.display.set_mode([SCREEN_WIDTH, SCREEN_HEIGHT])
 background = Background()
 hero = Hero()
+enemy = Enemy()
 all_sprites = pygame.sprite.Group()
 all_sprites.add(hero)
+all_sprites.add(enemy)
 
 def main():
     running = True
@@ -30,6 +32,7 @@ def main():
         
         pressed_keys = pygame.key.get_pressed()
         hero.update(pressed_keys)
+        
         
 
 #Hero.update(pressed_keys)

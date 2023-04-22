@@ -4,7 +4,7 @@ import random
 HERO = "assets/hero.png"
 HERO_SPEED = 1
 BACKGROUND = "assets/spooky_back.png"
-ENEMY = "assets/enemy.png"
+ENEMY = "assets/enemy_fr.png"
 BULLET_SPEED = 5
 TIMED_BULLET = random.randint(1000, 3000)
 BULLET = "assets/bullet_pump.png"
