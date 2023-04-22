@@ -35,8 +35,8 @@ class Hero(pygame.sprite.Sprite):
             self.rect.right = 875
         if self.rect.top <= 50:
             self.rect.top = 50
-        if self.rect.bottom >= 500:
-            self.rect.bottom = 500
+        if self.rect.bottom >= 450:
+            self.rect.bottom = 450
     
     def jump(self):
         self.rect.move_ip(0, -250)
